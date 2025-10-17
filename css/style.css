@@ -381,29 +381,6 @@ button:hover, a:hover {
     font-size: 10;
 }
 
-nav {
-    /* position: fixed; */
-    position: relative;
-    width: var(--nav-width);
-    height: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    padding: var(--box-padding);
-    border-right: var(--base-border);
-
-    /* height: 70vh; */
-
-    /* overflow-x: hidden; */
-    /* overflow-y: auto; */
-    /* scrollbar-width: thin; */
-    /* scrollbar-color: var(--scroll-color1) var(--scroll-color2); */
-    /* overscroll-behavior-y: none; */
-    z-index: 0;
-}
-
 /* nav a.button, */
 /* nav button {
     width: 100% !important;
@@ -436,6 +413,34 @@ nav {
     flex-direction: row;
 } */
 
+nav {
+    /* position: fixed; */
+    position: relative;
+    width: var(--nav-width);
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: var(--box-padding);
+    
+    /* border-right: var(--base-border); */
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    /* box-shadow: rgba(0, 0, 0, 0.1); */
+    background-color: white;
+
+    /* height: 70vh; */
+
+    /* overflow-x: hidden; */
+    /* overflow-y: auto; */
+    /* scrollbar-width: thin; */
+    /* scrollbar-color: var(--scroll-color1) var(--scroll-color2); */
+    /* overscroll-behavior-y: none; */
+    z-index: 0;
+}
+
 nav .profile {
     display: flex;
     align-items: start;
@@ -444,7 +449,7 @@ nav .profile {
     /* margin-top: 30px; */
     /* position: absolute;
     top: 50px; */
-    padding: 5px;
+    padding: 8px;
     border: var(--base-border);
     border-radius: 12px;
     border-width: 1px;
@@ -457,7 +462,7 @@ nav .profile:hover {
 }
 nav .profile img {
     /* width: 60px; */
-    height: 40px;
+    height: 38px;
     width: auto;
     border-radius: 50%;
     margin-right: 10px;
@@ -744,14 +749,26 @@ nav .profile img {
         height: var(--nav-height);
         padding: 0;
         flex-direction: row;
-        border-right: var(--clear);
-        border-bottom: var(--base-border);
+        /* border-right: var(--clear); */
+        /* border-bottom: var(--base-border); */
         overflow-x: auto;
         overflow-y: hidden;
-        background-color: var(--bg-color);
+        /* background-color: var(--bg-color); */
         /* width: 100%;
         height: 50px; 
         flex-direction: row;*/
+    }
+
+    nav .profile {
+        border: none;
+        width: auto;
+    }
+    nav .profile:hover {
+        background-color: var(--clear);
+        cursor: default !important;
+    }
+    nav .profile div {
+        display: none;
     }
 
     /* nav #profile {
