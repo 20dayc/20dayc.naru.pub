@@ -1,4 +1,24 @@
-function bgm()
+// import { CharacterInfo } from "../skin/js/character";
+//const reader = new FileReader();
+
+// function initialize()
+// {
+//     //reader.addEventListener("loadend", makeCharacterInfo);
+//     setBGM();
+// }
+
+function postPage(link)
+{
+    let iframe = document.getElementsByClassName("content")[0].getElementsByTagName("iframe")[0];
+    iframe.setAttribute("src", link);
+    iframe.contentWindow.location.reload();
+    iframe.onload = function()
+    {
+        console.log("page loaded");
+    }
+}
+
+function setBGM()
 {
     let parent = document.getElementById('bgm');
     let status = document.getElementById('bgmStatus');
@@ -32,16 +52,37 @@ function bgm()
     }
 }
 
-function openCharacter(name)
+function openCharacterInfoModal(name)
 {
     let modal = document.getElementById("modal-bg");
     modal.style.display = "contents";
-    let char_name = document.getElementById("modal-char-name");
-    char_name.innerText = name;
+    openCharacterInfoFile(name);
 }
 
-function closeCharacter()
+function closeCharacterInfoModal()
 {
     let modal = document.getElementById("modal-bg");
     modal.style.display = "none";
 }
+
+function openCharacterInfoFile(name)
+{
+    const fileName = `../../data/character/${name}.json`;
+    fetch(fileName)
+        .then(res => res.json())
+        .then(makeCharacterInfo);
+    //reader.readAsText(fileName);
+}
+
+function makeCharacterInfo(data)
+{
+    const character = new CharacterInfo(data);
+
+    let char_name = document.getElementById("modal-char-name");
+    char_name.innerText = character.name;
+}
+
+// function makeCharacterInfo(evt)
+// {
+//     const character = new CharacterInfo(reader.result);
+// }

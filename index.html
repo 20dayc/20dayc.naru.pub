@@ -1,23 +1,81 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <title>연차</title>
-    <link rel="icon" type="image/png" href="./skin/favicon.png"/>
-    <link rel="stylesheet" href="./skin/css/style.css">
-    <link rel="stylesheet" href="./skin/css/footer.css">
-    <script src="./skin/js/script.js"></script>
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <script src="https://kit.fontawesome.com/80aaedb476.js" crossorigin="anonymous"></script>
+    <!-- <script type="module" src="./skin/js/character.js"></script> -->
+    <!-- <script src="./scripts/db.js"></script> -->
+    <script src="./scripts/modal.js"></script>
+    <script src="./scripts/script.js"></script>
 </head>
+
 <body>
     <div id="wrap-parent">
         <div id="wrap">
-            <iframe src="./content.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            <div class="modal">
+                <div><button onclick="closeModal();">닫기</button></div>
+            </div>
+            <div style="display:flex; height: 70vh;">
+                <nav>
+                    <!-- <div id="bgmBtn">
+                <input type="hidden" id="bgmStatus" value="stop">
+                <div id="bgm"></div>
+                <div id="bgmBtn">
+                    <label class="switch">
+                        <input id="bgmInput" type="checkbox" onclick="bgm()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <script>window.addEventListener('load', ev => setBGM());</script>
+            </div> -->
+                    <div class="profile">
+                        <img src="./assets/profile-c997aa88.png">
+                        <div style="text-align: left; margin: 0;">
+                            <p style="font-size: small; font-weight: bold; margin: 0;">스물</p>
+                            <p style="font-size: small; margin: 0;">@apuddingmous</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="menu-deco">―✦―</div>
+                    <br>
+                    <!-- <a href="./pages/home.html" target="frame" class="menu-button">Home</a> -->
+                    <!-- <a href="./pages/home.html" target="frame" class="menu-button">Home</a> -->
+                    <div style="display: flex; height: 100%;">
+                        <button class="menu-button" onclick="postPage('./pages/home.html');"><i
+                                class="fa-solid fa-house"></i></button>
+                        <button class="menu-button" onclick="openModal();"><i class="fa-solid fa-comment"></i></button>
+                    </div>
+
+                    <!-- <i class="fa-solid fa-house"></i> -->
+                    <!-- <i class="fa-solid fa-house"></i> -->
+                    <div class="menu-deco">✦</div>
+                    <!-- <a href="./pages/characters.html" target="frame" class="menu-button">Characters</a> -->
+                    <!-- <div id="menuDeco">✦</div> -->
+                    <!-- <a href="mailto:20daysc@gmail.com" target="frame" class="menu-button">Contact</a> -->
+                </nav>
+                <!-- <div id="content">
+                    <iframe src="./pages/home.html" name="frame" frameborder="0"
+                        style="width: 100%; height: 100%;"></iframe>
+                </div> -->
+                <div class="content">
+                    <iframe name="page" src="./pages/home.html" frameborder="0" style="width: 100%;"></iframe>
+                    <!-- <iframe name="page" src="./pages/home.html" frameborder="0" style="width: 100%; height: 100%;"></iframe> -->
+                </div>
+            </div>
+            
+            <!-- <iframe src="./content.html" frameborder="0" style="width: 100%; height: 100%;"></iframe> -->
         </div>
         <div id="footer">
             <p>Naruter copyright ⓒ since by 2024 Rotorri</p>
         </div>
     </div>
 </body>
+
 </html>
