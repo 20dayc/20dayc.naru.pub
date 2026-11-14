@@ -1,0 +1,312 @@
+<head>
+    <style>
+        @keyframes showNav {
+            from {
+                transform: translateX(-80%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        nav {
+            animation-name: showNav;
+            animation-duration: 1.5s;
+            animation-timing-function: cubic-bezier(0.4, 1, 0.22, 1);
+            animation-direction: alternate;
+        }
+        #music-player {
+            animation-name: showNav;
+            animation-duration: 1.8s;
+            animation-timing-function: cubic-bezier(0.6, 1, 0.2, 0.8);
+            animation-direction: alternate;
+        }
+
+        nav {
+            width: 200px;
+            height: 400px;
+            display: fixed;
+            position: fixed;
+            left: 80px;
+            top: 80px;
+        }
+        nav div.profile {
+            display: block;
+            align-items: center;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            border: 1px solid var(--color-primary-dark);
+            padding: 12px;
+            width: 100%;
+        }
+        nav div.profile:hover {
+            background-color: var(--hover-background-color);
+            /* cursor: pointer; */
+        }
+        nav div.profile div.profile-content {
+            display: flex;
+            text-align: justify;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            /* margin-left: 8px; */
+        }
+        nav div.profile div.profile-content div.profile-info {
+            width: calc(100% - var(--profile-image-size) - 8px); /* 이미지 크기 + 패딩 */
+        }
+        nav div.profile div.profile-content img {
+            width: var(--profile-image-size);
+            height: var(--profile-image-size);
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav div.profile div.profile-content div {
+            display: flex;
+            flex-direction: column;
+        }
+        nav div.profile p {
+            font-size: 0.7em;
+            margin: 0;
+            text-align: left;
+        }
+        nav div.profile p.profile-name {
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+        nav div.profile p.profile-id {
+            color: var(--color-text-light);
+            font-size: 0.58em;
+        }
+
+        nav div.nav-deco {
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--color-primary-dark);
+            margin-bottom: 8px;
+        }
+
+        nav div.nav-menu {
+            margin-top: 16px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        nav ul li a {
+            width: 44px;
+            height: 44px;
+            color: var(--color-disabled);
+            border: 1px solid var(--color-disabled);
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, var(--hover-alpha));
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            cursor: pointer;
+        }
+        nav ul li a.active, nav ul li a:hover {
+            color: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
+        }
+        nav ul li a.active {
+            background-color: var(--active-background-color);
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: var(--hover-background-color);
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a.active:hover {
+            background-color: var(--active-hover-background-color);
+            transition: background-color 0.3s ease;
+        }
+
+        nav div.nav-contact {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            bottom: -80px;
+            position: relative;
+            justify-content: center;
+            gap: 12px;
+        }
+        nav div.nav-contact a {
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        nav div.nav-contact a:hover {
+            opacity: 0.6;
+        }
+
+        #music-player {
+            width: 200px;
+            height: 80px;
+            position: fixed;
+            left: 80px;
+            top: 500px;
+            /* justify-content: center; */
+            align-items: center;
+            display: flex;
+            /* justify-content:flex-start; */
+            /* gap: 12px; */
+        }
+        .music-player-lp {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            background-color: black;
+            /* animation: spin 4s linear infinite; */
+        }
+        .music-player-lp-inner {
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            margin: 30% auto;
+            background-color: #db4416;
+        }
+        .music-player-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: calc(100% - 60px - 12px); /* LP 크기 + 간격 */
+            margin-left: 12px;
+        }
+        .music-player-title {
+            font-size: 0.8em;
+            font-weight: bold;
+            margin: 0;
+        }
+        .music-player-singer {
+            font-size: 0.7em;
+            margin: 0;
+            color: var(--color-text-light);
+        }
+        .music-player-buttons {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #music-player-playandpause[type="checkbox"] {
+            appearance: none;
+            cursor: pointer;
+            width: 20px;
+            text-align: center;
+        }
+        #music-player-playandpause[type="checkbox"]::before {
+            content: "▶";
+            font-size: 0.8em;
+            color: var(--color-text);
+        }
+        #music-player-playandpause[type="checkbox"]:checked::before {
+            content: "⏸";
+            font-size: 1em;
+            color: var(--color-text);
+        }
+        #music-player-playandpause[type="checkbox"]:hover::before,
+        #music-player-playandpause[type="checkbox"]:checked:hover::before {
+            color: var(--color-secondary-dark);
+        }
+
+        @media screen and (max-width: 768px) {
+        nav.nav {
+            width: 100%;
+            height: auto;
+        }
+        nav div.profile {
+            flex-direction: row;
+            align-items: center;
+            margin-left: 10px;
+            border: 0;
+            cursor: default;
+        }
+        nav div.profile:hover {
+            background-color: transparent;
+            cursor: default;
+        }
+        nav div.profile div.profile-content {
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 0;
+            border: 0;
+        }
+        nav div.profile div.profile-content div.profile-info {
+            display: none;
+        }
+        nav div.profile div.profile-description {
+            display: none;
+        }
+    }
+    </style>
+</head>
+<body>
+    <nav class="window nav">
+        <div class="profile">
+            <div class="profile-content">
+                <img class="profile-image" src="/assets/profile_261114.png" alt="프로필 이미지">
+                <div class="profile-info">
+                    <p class="profile-name">스물</p>
+                    <p class="profile-id">@20dayc</p>
+                    <p class="profile-id">@apuddingmous</p>
+                </div>
+            </div>
+            <div class="profile-description">
+                <p>하지만 야드파운드같은 걸 쓰길 바라는 것도 아니라서 스스로 어쩌면 좋을지 저도 잘 모르겠습니다. 국립국어원은 야마가 돌겠지만 사실 한글의 취지에는 노 프라블럼입니다.</p>
+            </div>
+        </div>
+        <div class="nav-deco">✦ ✦ ✦</div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="/index.html"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="/pages/chat.html"><i class="fa-solid fa-comment-dots"></i></a></li>
+                <li><a href="/pages/dream.html"><i class="fa-solid fa-people-group"></i></a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-contact">
+            <a href="https://twitter.com/apuddingmous" target="_blank"><img src="/assets/icon/0_twitter.png" alt="Twitter"></a>
+            <a href="https://bsky.app/profile/20dayc.bsky.social" target="_blank"><img src="/assets/icon/1_bluesky.png" alt="Bluesky"></a>
+            <a href="https://20dayc.tistory.com/" target="_blank"><img src="/assets/icon/2_tistory.png" alt="Tistory Blog"></a>
+        </div>
+    </nav>
+    <div class="window" id="music-player">
+        <div class="music-player-lp">
+            <div class="music-player-lp-inner">
+            </div>
+        </div>
+        <div class="music-player-info"> 
+            <p class="music-player-title">Music Player</p>
+            <p class="music-player-singer">Music Player</p>
+            <div class="music-player-buttons"><input type="checkbox" id="music-player-playandpause" checked></div>
+        </div>
+        <!-- <div style="display: none"> -->
+            <!-- <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/KBXF59o-fOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; loop; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+        <!-- </div> -->
+        
+        <!-- <div class="music-player-header">
+            <span>Music Player</span>
+            <button id="close-music-player">X</button>
+        </div>
+        <div class="music-player-content">
+            <audio id="audio-player" controls>
+                <source src="/assets/music/sample.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div> -->
+    </div>
+</body>
